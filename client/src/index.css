@@ -3,37 +3,27 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   font-family: "Josefin Sans";
   background-image: url("../public/images/bg-desktop-light.jpg");
   background-repeat: no-repeat;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 .App {
-  padding: 50px;
-  padding-bottom: 0;
-  padding-top: 0;
-  width: 50vw;
+  width: 50%;
+  padding: 0 50px 0 50px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   height: 100vh;
   gap: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .taskInputBox {
   background-color: white;
-  padding: 10px;
-  width: 100%;
+  padding: 12px;
+  padding-right: 0;
   display: flex;
   align-items: center;
   border: none;
@@ -41,11 +31,15 @@ code {
   gap: 20px;
 }
 
+.form {
+  flex: 1;
+}
 img {
   height: 30px;
   width: 30px;
   opacity: 0.3;
 }
+
 .Title {
   padding-top: 20px;
   font-size: 35px;
@@ -54,7 +48,50 @@ img {
 .newTask {
   font-size: 16px;
   font-family: "Josefin Sans";
-  width: 100%;
+  width: 90%;
   height: 100%;
   border: none;
+}
+
+.taskList {
+  background-color: white;
+  height: auto;
+
+  border-radius: 4px;
+  box-shadow: 0px 20px 14px 0px #d9d9d9;
+}
+.taskData {
+  height: 50px;
+  color: grey;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.listContainer {
+  padding-left: 0;
+  margin: 0;
+}
+li {
+  padding: 5px;
+  padding-left: 12px;
+  border-bottom: 1px solid grey;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  list-style: none;
+  gap: 20px;
+}
+.status {
+  color: grey;
+  font-size: 16px;
+  font-family: "Josefin Sans";
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.status:focus {
+  color: rgb(0, 115, 255);
 }
