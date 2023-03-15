@@ -1,25 +1,30 @@
 const { gql } = require("apollo-server");
 
 const typeDefs = gql`
-  type Query {
-    getTodos: [Todo!]
-  }
-
   type Todo {
     id: ID!
     title: String!
     isComplete: Boolean
   }
 
-  input TodoInput {
+  input newTodoInput {
+    title: String
+  }
+
+  input editedTodoInput {
+    id: ID!
     title: String
     isComplete: Boolean
   }
 
+  type Query {
+    getTodos: [Todo]
+  }
+
   type Mutation {
-    createTodo(todoInput: TodoInput): Todo
+    createTodo(newTodo: newTodoInput): Todo
     deleteTodo(ID: ID!): Boolean
-    editTodo(ID: ID!, todoInput: TodoInput): Todo
+    editTodo(editedTodo: editedTodoInput!): Todo
   }
 `;
 

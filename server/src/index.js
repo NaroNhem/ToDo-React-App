@@ -1,21 +1,11 @@
 const { ApolloServer } = require("apollo-server");
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
+
 const typeDefs = require("./schema/schema");
+const resolvers = require("./resolvers/resolvers");
 
-// Mock data
-const mocks = {
-  Query: () => ({
-    todos: () => [...new Array(3)],
-  }),
-  Todo: () => ({
-    id: "1",
-    title: "I'm a todo",
-    isComplete: false,
-  }),
-};
-
-const server = new ApolloServer({ typeDefs, mocks });
+const server = new ApolloServer({ typeDefs, resolvers });
 
 mongoose
   .connect(process.env.MONGO_URI, { useNewUrlParser: true })
