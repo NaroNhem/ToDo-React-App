@@ -95,3 +95,32 @@ li {
 .status:focus {
   color: rgb(0, 115, 255);
 }
+
+.addTask {
+  background-image: url("../public/images/Circle_-_black_simple.svg");
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid #d9d9d9;
+  background-color: white;
+  cursor: pointer;
+}
+span {
+  display: none;
+  height: 30px;
+  padding: none;
+}
+
+.addTask:hover span {
+  display: block;
+  font-size: 26px;
+  color: #d9d9d9;
+  height: 30px;
+}
+
+.addTask:active span {
+  color: rgb(0, 141, 196);
+}
+.addTask:active {
+  border-color: rgb(0, 141, 196);
+}

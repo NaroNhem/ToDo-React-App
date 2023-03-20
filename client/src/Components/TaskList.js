@@ -1,28 +1,17 @@
-export default function TaskList() {
+import Task from "./Task";
+
+export default function TaskList(props) {
+  const taskItems = (todos) => {
+    return todos.map((element, index) => {
+      return <Task title={element.title} key={index} />;
+    });
+  };
+
   return (
     <div className="taskList">
-      <ul className="listContainer">
-        <li>
-          <div className="inputImg">
-            <img src="/images/Circle_-_black_simple.svg" />
-          </div>
-          Create a new todo
-        </li>
-        <li>
-          <div className="inputImg">
-            <img src="/images/Circle_-_black_simple.svg" />
-          </div>
-          Create a new todo
-        </li>
-        <li>
-          <div className="inputImg">
-            <img src="/images/Circle_-_black_simple.svg" />
-          </div>
-          Create a new todo
-        </li>
-      </ul>
+      <ul className="listContainer">{taskItems(props.todos)}</ul>
       <div className="taskData">
-        <div>1 items left</div>
+        <div>{props.todos.length} items left</div>
         <div>
           <input type="button" value="All" className="status" />
           <input type="button" value="Active" className="status" />
