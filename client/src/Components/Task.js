@@ -1,12 +1,28 @@
 export default function Task(props) {
+  const { title, isComplete, id } = props.task;
+  const { index, markComplete } = props;
   return (
     <div>
-      <li>
-        <div className="inputImg">
-          <img src="/images/Circle_-_black_simple.svg" />
-        </div>
-        {props.title}
-      </li>
+      {isComplete === true ? (
+        <li className="lineThrough">
+          <div className="imgContainer">
+            <img src="images/icon-check.svg" alt="checkMark"></img>
+          </div>
+          <p className="opac">{title}</p>
+        </li>
+      ) : (
+        <li>
+          <div className="inputImg">
+            <button
+              className="markComplete"
+              onClick={() => {
+                markComplete(index);
+              }}
+            />
+          </div>
+          {title}
+        </li>
+      )}
     </div>
   );
 }

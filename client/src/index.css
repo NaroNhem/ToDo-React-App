@@ -34,10 +34,23 @@ body {
 .form {
   flex: 1;
 }
-img {
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 30px;
   width: 30px;
-  opacity: 0.3;
+  border-radius: 20px;
+  background: rgb(182, 95, 236);
+  background: linear-gradient(
+    90deg,
+    rgba(182, 95, 236, 1) 0%,
+    rgba(111, 166, 249, 1) 100%
+  );
+}
+img {
+  height: 12px;
+  width: 12px;
 }
 
 .Title {
@@ -123,4 +136,33 @@ span {
 }
 .addTask:active {
   border-color: rgb(0, 141, 196);
+}
+
+.markComplete {
+  background-image: url("/public/images/icon-check.svg");
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid #d9d9d9;
+  background-color: white;
+  cursor: pointer;
+}
+
+.markComplete:hover {
+  background-image: url("/public/images/icon-check.svg");
+  background: rgb(182, 95, 236);
+  background: linear-gradient(
+    90deg,
+    rgba(182, 95, 236, 1) 0%,
+    rgba(111, 166, 249, 1) 100%
+  );
+  opacity: 0.3;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+}
+
+.opac {
+  opacity: 0.5;
 }
