@@ -1,6 +1,6 @@
 export default function Task(props) {
   const { title, isComplete, id } = props.task;
-  const { index, markComplete } = props;
+  const { index, markComplete, removeTask } = props;
   return (
     <div>
       {isComplete === true ? (
@@ -9,6 +9,11 @@ export default function Task(props) {
             <img src="images/icon-check.svg" alt="checkMark"></img>
           </div>
           <p className="opac">{title}</p>
+          <div className="crossContainer">
+            <button className="removeTask" onClick={() => removeTask(index)}>
+              <img src="images/icon-cross.svg" alt="cross"></img>
+            </button>
+          </div>
         </li>
       ) : (
         <li>
@@ -21,6 +26,11 @@ export default function Task(props) {
             />
           </div>
           {title}
+          <div className="crossContainer">
+            <button className="removeTask" onClick={() => removeTask(index)}>
+              <img src="images/icon-cross.svg" alt="cross"></img>
+            </button>
+          </div>
         </li>
       )}
     </div>

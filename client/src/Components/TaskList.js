@@ -9,6 +9,7 @@ export default function TaskList(props) {
           key={index}
           index={index}
           markComplete={props.markComplete}
+          removeTask={props.removeTask}
         />
       );
     });
@@ -27,8 +28,8 @@ export default function TaskList(props) {
     <div className="taskList">
       <ul className="listContainer">{taskItems(props.todos)}</ul>
       <div className="taskData">
-        <div>{itemsLeft(props.todos)} items left</div>
-        <div>
+        <div className="itemsLeft">{itemsLeft(props.todos)} items left</div>
+        <div className="btnContainer">
           <input type="button" value="All" className="status" />
           <button
             className="status"
@@ -48,7 +49,14 @@ export default function TaskList(props) {
             Completed
           </button>
         </div>
-        <div>Clear Completed</div>
+        <button
+          className="clear"
+          onClick={() => {
+            props.clearCompleted(props.todos);
+          }}
+        >
+          Clear Completed
+        </button>
       </div>
     </div>
   );

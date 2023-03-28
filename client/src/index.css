@@ -1,3 +1,19 @@
+:root {
+  --font-color: black;
+  --background: white;
+  --background-image: url("../public/images/bg-desktop-light.jpg");
+  --title-color: white;
+  --focus-color: rgb(0, 115, 255);
+  --box-shadow: #d9d9d9;
+}
+[data-theme="dark"] {
+  --font-color: white;
+  --background: hsl(237, 14%, 26%);
+  --background-image: url("../public/images/bg-desktop-dark.jpg");
+  --focus-color: hsl(234, 39%, 85%);
+  --box-shadow: black;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,10 +21,20 @@ body {
     sans-serif;
   height: 100vh;
   font-family: "Josefin Sans";
-  background-image: url("../public/images/bg-desktop-light.jpg");
+  background-image: var(--background-image);
   background-repeat: no-repeat;
+  background-color: var(--background);
 }
 
+.light {
+  background-image: url("../public/images/bg-desktop-light.jpg");
+  background-color: white;
+}
+
+.dark {
+  background-image: url("../public/images/bg-desktop-dark.jpg");
+  background-color: hsl(235, 24%, 19%);
+}
 .App {
   width: 50%;
   padding: 0 50px 0 50px;
@@ -21,7 +47,7 @@ body {
 }
 
 .taskInputBox {
-  background-color: white;
+  background-color: var(--background);
   padding: 12px;
   padding-right: 0;
   display: flex;
@@ -56,7 +82,7 @@ img {
 .Title {
   padding-top: 20px;
   font-size: 35px;
-  color: white;
+  color: var(--title-color);
 }
 .newTask {
   font-size: 16px;
@@ -64,14 +90,17 @@ img {
   width: 90%;
   height: 100%;
   border: none;
+  background-color: var(--background-color);
+  color: var(--font-color);
 }
 
 .taskList {
-  background-color: white;
+  background-color: var(--background);
+  color: var(--font-color);
   height: auto;
 
   border-radius: 4px;
-  box-shadow: 0px 20px 14px 0px #d9d9d9;
+  box-shadow: 0px 20px 14px 0px var(--box-shadow);
 }
 .taskData {
   height: 50px;
@@ -101,12 +130,12 @@ li {
   font-size: 16px;
   font-family: "Josefin Sans";
   border: none;
-  background-color: white;
+  background-color: var(--background);
   cursor: pointer;
 }
 
 .status:focus {
-  color: rgb(0, 115, 255);
+  color: var(--focus-color);
 }
 
 .addTask {
@@ -165,4 +194,61 @@ span {
 
 .opac {
   opacity: 0.5;
+}
+
+.clear {
+  color: grey;
+  font-size: 16px;
+  font-family: "Josefin Sans";
+  border: none;
+  background-color: var(--background);
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.darkMode {
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  cursor: pointer;
+  width: 30px;
+}
+
+.moon {
+  height: 20px;
+  width: 20px;
+  padding-top: 10px;
+}
+
+.crossContainer {
+  width: 80%;
+  display: flex;
+  justify-content: end;
+  padding-right: 10px;
+}
+
+.removeTask {
+  border: none;
+  background-color: var(--background);
+  cursor: pointer;
+  fill: red;
+}
+@media only screen and (max-width: 790px) {
+  .App {
+    width: 85%;
+    padding: 0;
+  }
+  .btnContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .itemsLeft {
+    text-align: center;
+  }
 }
