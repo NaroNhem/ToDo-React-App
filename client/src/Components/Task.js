@@ -25,7 +25,7 @@ export default function Task(props) {
               }}
             />
           </div>
-          {title}
+          <p className="titleContainer">{title}</p>
           <div className="crossContainer">
             <button className="removeTask" onClick={() => removeTask(index)}>
               <img src="images/icon-cross.svg" alt="cross"></img>

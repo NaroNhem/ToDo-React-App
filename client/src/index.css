@@ -226,7 +226,7 @@ header {
 }
 
 .crossContainer {
-  width: 80%;
+  width: 10%;
   display: flex;
   justify-content: end;
   padding-right: 10px;
@@ -237,6 +237,11 @@ header {
   background-color: var(--background);
   cursor: pointer;
   fill: red;
+}
+
+.titleContainer,
+.opac {
+  width: 80%;
 }
 @media only screen and (max-width: 790px) {
   .App {
