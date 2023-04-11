@@ -1,5 +1,90 @@
-function App() {
-  return <div className="App">hello world</div>;
-}
+import TaskInput from "./Components/TaskInput";
+import TaskList from "./Components/TaskList";
+import { useState, useEffect } from "react";
 
+function App() {
+  const [todos, setToDos] = useState([]);
+
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
+  const addTask = (taskName) => {
+    const newTask = {
+      id: 1,
+      title: taskName,
+      isComplete: false,
+    };
+    const updatedTodos = [...todos];
+    updatedTodos.push(newTask);
+    setToDos(updatedTodos);
+  };
+
+  const statusCompleted = (todoList) => {
+    console.log(todoList);
+    const filteredTodos = [...todoList].filter((element) => {
+      console.log(element);
+      return element.isComplete;
+    });
+    console.log(filteredTodos);
+    setToDos(filteredTodos);
+  };
+
+  const statusActive = (todoList) => {
+    const filteredTodos = [...todoList].filter((element) => {
+      return element.isComplete != true ? element : false;
+    });
+    setToDos(filteredTodos);
+  };
+
+  const markComplete = (index) => {
+    const filteredTodos = [...todos];
+    let todo = filteredTodos[index];
+    todo.isComplete = true;
+    setToDos(filteredTodos);
+  };
+
+  const removeTask = (index) => {
+    const filteredTodos = [...todos];
+    filteredTodos.splice(index, 1);
+    setToDos(filteredTodos);
+  };
+
+  const clearCompleted = (todoList) => {
+    const filteredTodos = [...todoList].filter((task) => {
+      return task.isComplete !== true;
+    });
+    console.log(filteredTodos);
+    setToDos(filteredTodos);
+  };
+  return (
+    <div className={`App`} data-theme={theme}>
+      <header>
+        <h1 className="Title">T O D O</h1>
+        <button className="darkMode" onClick={toggleTheme}>
+          {theme === "light" ? (
+            <img className="moon" src="images/icon-moon.svg" />
+          ) : (
+            <img className="moon" src="images/icon-sun.svg" />
+          )}
+        </button>
+      </header>
+      <TaskInput todos={todos} addTask={addTask} />
+      <TaskList
+        todos={todos}
+        statusCompleted={statusCompleted}
+        statusActive={statusActive}
+        markComplete={markComplete}
+        clearCompleted={clearCompleted}
+        removeTask={removeTask}
+      />
+    </div>
+  );
+}
 export default App;
