@@ -27,12 +27,9 @@ function App() {
   };
 
   const statusCompleted = (todoList) => {
-    console.log(todoList);
     const filteredTodos = [...todoList].filter((element) => {
-      console.log(element);
       return element.isComplete;
     });
-    console.log(filteredTodos);
     setToDos(filteredTodos);
   };
 
@@ -43,10 +40,11 @@ function App() {
     setToDos(filteredTodos);
   };
 
-  const markComplete = (index) => {
+  const toggleCompletion = (index) => {
     const filteredTodos = [...todos];
     let todo = filteredTodos[index];
-    todo.isComplete = true;
+    todo.isComplete ? (todo.isComplete = false) : (todo.isComplete = true);
+    console.log(todo);
     setToDos(filteredTodos);
   };
 
@@ -60,18 +58,18 @@ function App() {
     const filteredTodos = [...todoList].filter((task) => {
       return task.isComplete !== true;
     });
-    console.log(filteredTodos);
     setToDos(filteredTodos);
   };
+
   return (
     <div className={`App`} data-theme={theme}>
       <header>
-        <h1 className="Title">T O D O</h1>
-        <button className="darkMode" onClick={toggleTheme}>
+        <h1 className='Title'>T O D O</h1>
+        <button className='darkMode' onClick={toggleTheme}>
           {theme === "light" ? (
-            <img className="moon" src="images/icon-moon.svg" />
+            <img className='moon' src='images/icon-moon.svg' />
           ) : (
-            <img className="moon" src="images/icon-sun.svg" />
+            <img className='moon' src='images/icon-sun.svg' />
           )}
         </button>
       </header>
@@ -80,7 +78,7 @@ function App() {
         todos={todos}
         statusCompleted={statusCompleted}
         statusActive={statusActive}
-        markComplete={markComplete}
+        toggleCompletion={toggleCompletion}
         clearCompleted={clearCompleted}
         removeTask={removeTask}
       />

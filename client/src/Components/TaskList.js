@@ -8,7 +8,7 @@ export default function TaskList(props) {
           task={task}
           key={index}
           index={index}
-          markComplete={props.markComplete}
+          toggleCompletion={props.toggleCompletion}
           removeTask={props.removeTask}
         />
       );
@@ -16,32 +16,28 @@ export default function TaskList(props) {
   };
 
   const itemsLeft = (todos) => {
-    let completed = 0;
-    todos.forEach((element) => {
-      if (element.isCompleted === false);
-      completed += 1;
-    });
-    return completed;
+    return todos.reduce((acc, todo) => {
+      return !todo.isComplete ? acc + 1 : acc + 0;
+    }, 0);
   };
 
   return (
-    <div className="taskList">
-      <ul className="listContainer">{taskItems(props.todos)}</ul>
-      <div className="taskData">
-        <div className="itemsLeft">{itemsLeft(props.todos)} items left</div>
-        <div className="btnContainer">
-          <input type="button" value="All" className="status" />
+    <div className='taskList'>
+      <ul className='listContainer'>{taskItems(props.todos)}</ul>
+      <div className='taskData'>
+        <div className='itemsLeft'>{itemsLeft(props.todos)} items left</div>
+        <div className='btnContainer'>
+          <input type='button' value='All' className='status' />
           <button
-            className="status"
+            className='status'
             onClick={() => {
               props.statusActive(props.todos);
-              console.log(props.todos);
             }}
           >
             Active
           </button>
           <button
-            className="status"
+            className='status'
             onClick={() => {
               props.statusCompleted(props.todos);
             }}
@@ -50,7 +46,7 @@ export default function TaskList(props) {
           </button>
         </div>
         <button
-          className="clear"
+          className='clear'
           onClick={() => {
             props.clearCompleted(props.todos);
           }}
